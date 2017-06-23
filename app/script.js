@@ -9,7 +9,7 @@ $(function () {
     if ("WebSocket" in window) {
         console.log("supports web sockets");
         var protocol = "ws";
-        if (location.protocol == "https") {
+        if (location.protocol == "https:") {
             protocol = "wss";
         }
 
