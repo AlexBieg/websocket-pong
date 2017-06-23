@@ -38,6 +38,8 @@ function update() {
     });
 }
 
+app.set('port', (process.env.PORT || 8080));
+
 app.use(express.static(path.join(__dirname + '/app')));
 
 app.get("/", function (req, res) {
@@ -116,9 +118,8 @@ app.ws('/game', (ws, req) => {
     });
 });
 
-var port = 8080;
-app.listen(port, function () {
-    console.log("listening on port " + port + "...");
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
 
 setInterval(update, 10);
