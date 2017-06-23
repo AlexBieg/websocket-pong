@@ -8,7 +8,12 @@ $(function () {
 
     if ("WebSocket" in window) {
         console.log("supports web sockets");
-        socket = new WebSocket("ws://" + location.host + "/game");
+        var protocol = "ws";
+        if (location.protocol == "https") {
+            protocol = "wss";
+        }
+
+        socket = new WebSocket(protocol + "://" + location.host + "/game");
 
         socket.onopen = function () {
             console.log("web socket connected");
